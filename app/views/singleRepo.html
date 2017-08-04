@@ -1,0 +1,53 @@
+<div layout layout-align="center center">
+    <md-card flex="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline" layout="row" layout-align="center center">{{repository.name}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p class="md-accent">{{repository.description}}</p>
+            <a class="md-accent" ng-href="{{repository.html_url}}" target="_blank"><i class="fa fa-github"
+
+                                                                                      aria-hidden="true"> View on
+                github</i></a>
+
+            <p> Open issues <i class="fa fa-exclamation" aria-hidden="true"></i>
+                {{repository.open_issues_count}}</p>
+            <p> forks <i class="fa fa-code-fork" aria-hidden="true"></i>
+                {{repository.forks}}</p>
+            <p>stargazers count {{repository.stargazers_count}}</p>
+            <p>size {{repository.size}}</p>
+            <p> watchers count {{repository.watchers_count}}</p>
+            <p> Language {{repository.language}}</p>
+            <p>default branch {{repository.default_branch}}</p>
+            <p>network count {{repository.network_count}}</p>
+            <p>subscribers count {{repository.subscribers_count}}</p>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+        </md-card-actions>
+    </md-card>
+
+
+</div>
+
+
+<div layout layout-align="center center">
+    <md-list flex="50">
+        <md-subheader class="md-no-sticky">Open issues</md-subheader>
+        <md-list-item ng-repeat="issue in issues.items" ng-if="issue.state== 'open' " class="md-3-line"
+                      ng-href="{{issue.html_url}}">
+            <img ng-src="{{issue.user.avatar_url}}" class="md-avatar"/>
+            <div class="md-list-item-text" layout="column">
+                <h3>User:{{ issue.user.login }}</h3>
+                <h4>Title:{{ issue.title }}</h4>
+                <span>State:{{issue.state}}</span>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+
+    </md-list>
+
+</div>

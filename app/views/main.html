@@ -1,0 +1,44 @@
+<div layout layout-align="center center">
+    <md-card flex="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline" layout="row" layout-align="center center">Find a repository on Github</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <a class="md-accent">Enter a repository name below and click the button to display profile info.
+            </a>
+            <md-input-container layout-gt-lg class="md-block">
+                <label>Repository </label>
+                <input ng-model="repository">
+            </md-input-container>
+
+
+            <div ng-if=""></div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-accent" ng-click="Search()">Search</md-button>
+            <md-button class="md-accent" ng-click="clearUser()">Clear</md-button>
+        </md-card-actions>
+    </md-card>
+</div>
+
+<div ng-show="repoNotFound">
+    <h2>We couldn’t find any repositories matching {{repository}}</h2>
+</div>
+
+<div ng-show="loaded" layout layout-align="center center">
+    <md-list flex="50">
+        <md-subheader class="md-no-sticky">Found the following repositories</md-subheader>
+        <md-list-item ng-repeat="item in repo.items" class="md-3-line" ng-href="#!/{{item.full_name}}">
+            <img ng-src="{{item.owner.avatar_url}}" class="md-avatar"/>
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ item.full_name }}</h3>
+                <h4>{{ item.description }}</h4>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+
+    </md-list>
+
+</div>
