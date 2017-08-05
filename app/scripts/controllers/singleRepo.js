@@ -3,13 +3,14 @@
  */
 'use strict';
 
-app.controller('SingleRepo', function ($scope, GithubApi, $routeParams) {
+app.controller('SingleRepo', function ($scope, GithubApi, $routeParams, filterFilter) {
     $scope.repo = $routeParams.repo + '/' + $routeParams.repo1;
 
     $scope.limit = 3;
     $scope.showIssues = false;
     $scope.showCharts = false;
     $scope.openIssues = function (item) {
+
         return item.state === 'open';
     };
 
@@ -22,7 +23,9 @@ app.controller('SingleRepo', function ($scope, GithubApi, $routeParams) {
     }).catch(function (status) {
         console.log(status);
     });
-
+    $scope.getCount = function (strCat) {
+        return filterFilter($scope.issues.items, {state: strCat}).length;
+    };
     $scope.LoadChart = function () {
         $scope.labels = ["Open Isues", "Forks", "stargazers", "watchers", "network", "subscribers"];
         $scope.series = ['Series A'];
