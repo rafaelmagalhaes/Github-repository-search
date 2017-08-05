@@ -50,16 +50,19 @@
                 </div>
             </div>
 
-            <div layout-xs="column" layout="row">
 
-
-            </div>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center center">
+            <md-button flex="30" ng-click="showIssues =! showIssues" flex-xs="100" class="md-raised md-primary">Show
+                Issues
+            </md-button>
+            <md-button flex="30" ng-click="showCharts =! showCharts" flex-xs="100" class="md-raised md-primary">Chart
+            </md-button>
         </md-card-actions>
     </md-card>
 </div>
-<div layout="row" layout-align="center center">
+<div ng-if="showIssues" layout="row" layout-align="center center">
 
     <md-input-container flex="50" flex-md="100" flex-sm="100" flex-xs="100" class="md-block">
         <label>Limit number of issues to show (default is 3)</label>
@@ -68,7 +71,7 @@
 
 </div>
 
-<div layout="row" layout-align="center center">
+<div ng-if="showIssues" layout="row" layout-align="center center">
 
     <md-list flex="50" flex-md="100" flex-sm="100" flex-xs="100">
         <md-subheader class="md-no-sticky">Open issues</md-subheader>
@@ -85,5 +88,17 @@
         <md-divider></md-divider>
 
     </md-list>
+
+</div>
+
+<div ng-if="showCharts" layout="row" layout-align="center center">
+    <md-content flex="50" flex-md="100" flex-sm="100" flex-xs="100">
+        <canvas id="line" class="chart chart-line" chart-data="data"
+                chart-labels="labels" chart-series="series" chart-options="options"
+                chart-dataset-override="datasetOverride">
+        </canvas>
+
+    </md-content>
+
 
 </div>

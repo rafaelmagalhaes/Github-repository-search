@@ -5,7 +5,7 @@ app.controller('MainCtrl', function ($scope, GithubApi) {
 
     $scope.repoNotFound = false;
     $scope.loaded = false;
-
+    $scope.repository ='';
     $scope.Search = function () {
         GithubApi.getRepos($scope.repository)
             .then(function (data) {

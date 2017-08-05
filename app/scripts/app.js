@@ -8,7 +8,8 @@ var app = angular.module('angularjsGithubApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'chart.js'
 ]);
 app.config(function ($routeProvider) {
     $routeProvider
@@ -17,10 +18,10 @@ app.config(function ($routeProvider) {
             controller: 'MainCtrl',
             controllerAs: 'main'
         })
-        .when('/about', {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerAs: 'about'
+        .when('/finduser', {
+            templateUrl: 'views/user.html',
+            controller: 'FindUser',
+            controllerAs: 'findUser'
         })
         .when('/:repo/:repo1', {
             templateUrl: 'views/singleRepo.html',

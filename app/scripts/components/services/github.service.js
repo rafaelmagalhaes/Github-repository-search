@@ -9,7 +9,7 @@ app.factory('GithubApi', function ($http) {
             return $http.get(API + 'search/repositories?q=' + data);
         },
         getUser: function (data) {
-            return $http.get(API + 'search/users?q=' + data);
+            return $http.get(API + 'users/' + data);
         },
         getUserRepos: function (data) {
             return $http.get(API + 'users/' + data + '/repos');
