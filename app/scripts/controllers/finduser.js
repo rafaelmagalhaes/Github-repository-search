@@ -10,6 +10,8 @@ app.controller('FindUser', function ($scope, GithubApi) {
         GithubApi.getUser($scope.userName).then(function (data) {
             $scope.user = data.data;
             $scope.loaded = true;
+            $scope.userNotFound = false;
+
         }).catch(function () {
             $scope.userNotFound = true;
             $scope.loaded = false;

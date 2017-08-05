@@ -8,11 +8,10 @@ app.controller('SingleRepo', function ($scope, GithubApi, $routeParams) {
 
     $scope.limit = 3;
     $scope.showIssues = false;
-    $scope.showCharts = true;
+    $scope.showCharts = false;
     $scope.openIssues = function (item) {
         return item.state === 'open';
     };
-
 
     GithubApi.getSingleRepo($scope.repo).then(function (data) {
         $scope.repository = data.data;
@@ -37,7 +36,7 @@ app.controller('SingleRepo', function ($scope, GithubApi, $routeParams) {
             ]
         ];
         $scope.datasetOverride = [{yAxisID: 'y-axis-1'}, {yAxisID: 'y-axis-2'}];
-        $scope.colors = ['rgb(159,204,0)','rgb(250,109,33)','rgb(154,154,154)'];
+        $scope.colors = ['rgb(159,204,0)', 'rgb(250,109,33)', 'rgb(154,154,154)'];
         $scope.options = {
             scales: {
                 yAxes: [

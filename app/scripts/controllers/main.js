@@ -11,6 +11,8 @@ app.controller('MainCtrl', function ($scope, GithubApi) {
             .then(function (data) {
                 $scope.loaded = true;
                 $scope.repo = data.data;
+                $scope.repoNotFound = false;
+
                 if ($scope.repo.total_count === 0) {
                     $scope.repoNotFound = true;
                     $scope.loaded = false;

@@ -62,7 +62,7 @@
         </md-card-actions>
     </md-card>
 </div>
-<div ng-if="showIssues" layout="row" layout-align="center center">
+<div ng-if="showIssues && issues.items.length > 0" layout="row" layout-align="center center">
 
     <md-input-container flex="50" flex-md="100" flex-sm="100" flex-xs="100" class="md-block">
         <label>Limit number of issues to show (default is 3)</label>
@@ -73,7 +73,7 @@
 
 <div ng-if="showIssues" layout="row" layout-align="center center">
 
-    <md-list flex="50" flex-md="100" flex-sm="100" flex-xs="100">
+    <md-list ng-show="issues.items.length > 0" flex="50" flex-md="100" flex-sm="100" flex-xs="100">
         <md-subheader class="md-no-sticky">Open issues</md-subheader>
         <md-list-item ng-repeat="issue in issues.items  | filter: openIssues |  limitTo : limit track by $index"
                       class="md-3-line"
@@ -86,8 +86,8 @@
             </div>
         </md-list-item>
         <md-divider></md-divider>
-
     </md-list>
+    <p ng-if="issues.items.length == 0"> This repository has no issues</p>
 
 </div>
 
