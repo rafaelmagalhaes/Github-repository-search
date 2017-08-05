@@ -11,6 +11,9 @@ app.factory('GithubApi', function ($http) {
         getUser: function (data) {
             return $http.get(API + 'search/users?q=' + data);
         },
+        getUserRepos: function (data) {
+            return $http.get(API + 'users/' + data + '/repos');
+        },
         getIssues: function (data) {
             return $http.get(API + 'search/issues?q=repo:' + data);
         },

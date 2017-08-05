@@ -7,22 +7,24 @@ app.controller('MainCtrl', function ($scope, GithubApi) {
     $scope.loaded = false;
 
     $scope.Search = function () {
-        console.log($scope.repository);
         GithubApi.getRepos($scope.repository)
             .then(function (data) {
                 $scope.loaded = true;
                 $scope.repo = data.data;
+                if ($scope.repo.total_count === 0) {
+                    $scope.repoNotFound = true;
+                    $scope.loaded = false;
+                }
             })
             .catch(function () {
                 $scope.repoNotFound = true;
+                $scope.loaded = false;
+
             });
-
     };
-
     $scope.clearUser = function () {
         $scope.repository = '';
         $scope.loaded = false;
-
+        $scope.repoNotFound = false;
     };
-
 });

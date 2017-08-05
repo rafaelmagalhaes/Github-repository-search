@@ -1,5 +1,5 @@
-<div layout layout-align="center center">
-    <md-card flex="50">
+<div layout="row" layout-align="center center">
+    <md-card flex="50" flex-md="100" flex-sm="100" flex-xs="100">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline" layout="row" layout-align="center center">Find a repository on Github</span>
@@ -12,23 +12,22 @@
                 <label>Repository </label>
                 <input ng-model="repository">
             </md-input-container>
-
-
-            <div ng-if=""></div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-accent" ng-click="Search()">Search</md-button>
+            <md-button class="md-accent" ng-disabled="!(repository)" ng-click="Search()">Search</md-button>
             <md-button class="md-accent" ng-click="clearUser()">Clear</md-button>
         </md-card-actions>
     </md-card>
 </div>
-
-<div ng-show="repoNotFound">
-    <h2>We couldn’t find any repositories matching {{repository}}</h2>
+<div ng-show="repoNotFound" layout="row" layout-align="center center">
+    <md-content flex="50" flex-md="100" flex-sm="100" flex-xs="100" layout-padding>
+        <h2>We couldn’t find any repositories matching <span ng-bind="repository | limitTo:15 "></span>
+            <span ng-if="repository.length > 15">...</span>
+        </h2>
+    </md-content>
 </div>
-
-<div ng-show="loaded" layout layout-align="center center">
-    <md-list flex="50">
+<div ng-show="loaded" layout="row" layout-align="center center">
+    <md-list flex="50" flex-md="100" flex-sm="100" flex-xs="100">
         <md-subheader class="md-no-sticky">Found the following repositories</md-subheader>
         <md-list-item ng-repeat="item in repo.items" class="md-3-line" ng-href="#!/{{item.full_name}}">
             <img ng-src="{{item.owner.avatar_url}}" class="md-avatar"/>
@@ -38,7 +37,5 @@
             </div>
         </md-list-item>
         <md-divider></md-divider>
-
     </md-list>
-
 </div>
