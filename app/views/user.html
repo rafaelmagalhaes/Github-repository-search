@@ -26,6 +26,11 @@
         </h2>
     </md-content>
 </div>
+<div layout="row" layout-align="center center">
+
+  <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+</div>
+
 <div ng-show="loaded" layout="row" layout-align="center center">
 
     <md-card flex="50" flex-md="100" flex-sm="100" flex-xs="100">
