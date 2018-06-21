@@ -8,18 +8,18 @@
                     info.
                 </p>
                 <div class="form-group">
-                    <input type="text" class="form-control" v-model="repository" placeholder="repository">
+                    <input type="text" class="form-control" v-model="search" placeholder="repository">
                 </div>
                 <button class="btn btn-link" @click="clearForm">Clear</button>
                 <button class="btn btn-link" :disabled="!formIsValid" @click="searchForRepo">Search</button>
             </div>
-
         </div>
 
         <Loading class="mt-5" v-if="loading"/>
-        <div v-if="results ===  true" class="list-group mt-5">
+        <div v-if="results" class="list-group mt-5">
 
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+            <a href="#" v-for="repository in loadedRepos" class="list-group-item list-group-item-action">
+                {{repository.full_name}}</a>
         </div>
     </section>
 </template>
@@ -31,7 +31,8 @@
         components: {Loading},
         data() {
             return {
-                repository: '',
+                repository: [],
+                search: '',
                 results: false,
                 loading: false,
 
@@ -40,18 +41,26 @@
         computed: {
             formIsValid() {
                 //keep search button disabled until repository field has a value
-                return this.repository
+                return this.search
+            },
+            loadedRepos() {
+                setTimeout(() =>{
+                    this.loading =  true
+                },1000)
+                return this.$store.getters.getRepos
             }
+
         },
         methods: {
-            async searchForRepo() {
+            searchForRepo() {
 
-
+                this.results = true
+                this.$store.dispatch('loadedRepos', this.search)
             },
             clearForm() {
                 this.results = false
 
-                this.repository = ''
+                this.search = ''
             }
         }
 
