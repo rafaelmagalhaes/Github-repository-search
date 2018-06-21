@@ -1,46 +1,28 @@
 {
-  "name": "angularjsgithub",
+  "name": "Github-repository-search",
+  "version": "1.0.0",
+  "description": "My fabulous Nuxt.js project",
+  "author": "rafael",
   "private": true,
-  "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
-    "grunt": "^0.4.5",
-    "grunt-angular-templates": "^0.5.7",
-    "grunt-concurrent": "^1.0.0",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-compass": "^1.0.0",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-connect": "^0.9.0",
-    "grunt-contrib-copy": "^0.7.0",
-    "grunt-contrib-cssmin": "^1.0.2",
-    "grunt-contrib-htmlmin": "^0.4.0",
-    "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-uglify": "^0.7.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-filerev": "^2.1.2",
-    "grunt-google-cdn": "^0.4.3",
-    "grunt-jscs": "^1.8.0",
-    "grunt-karma": "^2.0.0",
-    "grunt-newer": "^1.1.0",
-    "grunt-ng-annotate": "^0.9.2",
-    "grunt-postcss": "^0.5.5",
-    "grunt-svgmin": "^2.0.0",
-    "grunt-usemin": "^3.0.0",
-    "grunt-wiredep": "^2.0.0",
-    "jasmine-core": "^2.7.0",
-    "jit-grunt": "^0.9.1",
-    "jshint-stylish": "^1.0.0",
-    "karma": "^1.7.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "phantomjs-prebuilt": "^2.1.14",
-    "time-grunt": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
-    "test": "karma start test\\karma.conf.js"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap-vue": "^1.5.1",
+    "nuxt": "^1.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0"
+  }
 }

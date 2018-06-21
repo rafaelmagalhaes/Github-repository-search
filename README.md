@@ -1,28 +1,22 @@
-##  Github api 
+# Github-repository-search
 
-This project lets you search for repositories/users on github using Github API
+> My fabulous Nuxt.js project
 
-Project was built with Angularjs
+## Build Setup
 
-## Live Demo
+``` bash
+# install dependencies
+$ npm install
 
-http://githubapi.rafaelmagalhaes.xyz/#!/
+# serve with hot reload at localhost:3000
+$ npm run dev
 
+# build for production and launch server
+$ npm run build
+$ npm start
 
+# generate static project
+$ npm run generate
+```
 
-## Build & development
-
-### Install dependencies 
-
-`npm install`
-
-`bower install`
-
-
-Run `grunt build` for building and `grunt serve` for preview.
-
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
-
+For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
