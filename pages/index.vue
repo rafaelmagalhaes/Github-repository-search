@@ -18,7 +18,8 @@
         <Loading class="mt-5" v-if="loading"/>
         <div v-if="!loading" class="list-group mt-5">
 
-            <nuxt-link :to="repository.full_name" v-for="repository in loadedRepos"
+            <nuxt-link :to="{name: 'username-fullname', params:{fullname:repository.full_name}}"
+                       v-for="repository in loadedRepos"
                        class="list-group-item list-group-item-action">
                 <h3>
                     <img :src="repository.owner.avatar_url" class="avatar img-responsive">
