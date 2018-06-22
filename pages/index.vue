@@ -16,10 +16,16 @@
         </div>
 
         <Loading class="mt-5" v-if="loading"/>
-        <div v-if="results" class="list-group mt-5">
+        <div v-if="!loading" class="list-group mt-5">
 
-            <a href="#" v-for="repository in loadedRepos" class="list-group-item list-group-item-action">
-                {{repository.full_name}}</a>
+            <nuxt-link :to="repository.full_name" v-for="repository in loadedRepos"
+                       class="list-group-item list-group-item-action">
+                <h3>
+                    <img :src="repository.owner.avatar_url" class="avatar img-responsive">
+                    {{repository.full_name}}
+                </h3>
+                <span class=text-center>{{repository.description}}</span>
+            </nuxt-link>
         </div>
     </section>
 </template>
@@ -33,9 +39,6 @@
             return {
                 repository: [],
                 search: '',
-                results: false,
-                loading: false,
-
             }
         },
         computed: {
@@ -44,26 +47,24 @@
                 return this.search
             },
             loadedRepos() {
-                setTimeout(() =>{
-                    this.loading =  true
-                },1000)
                 return this.$store.getters.getRepos
+            },
+            loading() {
+                return this.$store.getters.loading
             }
-
         },
         methods: {
             searchForRepo() {
-
-                this.results = true
                 this.$store.dispatch('loadedRepos', this.search)
             },
             clearForm() {
-                this.results = false
-
+                this.$store.state.loadedRepos = []
                 this.search = ''
             }
         }
 
 
     }
+
+
 </script>
