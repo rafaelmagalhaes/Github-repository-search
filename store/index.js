@@ -53,8 +53,7 @@ const store = () => {
             },
             singleRepo({commit, state}, payload) {
                 commit('setLoading', true)
-                this.$axios.$get(state.API + 'repos' + payload).then((res) => {
-                    console.log(res)
+                this.$axios.$get(state.API + 'repos/' + payload).then((res) => {
                     commit('setSingleRepo', res)
                     commit('setLoading', false)
                 }).catch((err) => {
@@ -64,7 +63,6 @@ const store = () => {
             getIssues({commit, state}, payload) {
                 commit('setLoading', true)
                 this.$axios.$get(state.API + 'search/issues?q=repo:' + payload).then((res) => {
-                    console.log(res)
                     commit('setIssues', res)
                     commit('setLoading', false)
                 }).catch((err) => {
