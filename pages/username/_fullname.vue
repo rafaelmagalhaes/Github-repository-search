@@ -45,7 +45,7 @@
                 </div>
 
 
-                <a href="#" class="card-link " @click="showIssues">show issues</a>
+                <a href="#" class="card-link " @click="showIssues"><span>{{showHide}}</span> issues</a>
                 <a href="#" class="card-link" @click="showChart ">chart</a>
             </div>
         </div>
@@ -80,40 +80,39 @@
     export default {
         components: {Loading},
         mounted() {
-            this.$store.dispatch('singleRepo', this.repo) // get the repository data
+            this.$store.dispatch('singleRepo', this.repo) // fetch the repository data once page is loaded
         },
         data() {
             return {
+                showHide: 'show',
                 issues: false,
                 limit: 3,
                 charts: false,
-                repo: this.$route.params.fullname
+                repo: this.$route.params.fullname //  return the router params
             }
         },
         computed: {
             getSingleRepo() {
-                return this.$store.getters.getSingleRepo
+                return this.$store.getters.getSingleRepo  // return the repository data from getSingleRepo variable
             },
             loading() {
-
                 return this.$store.getters.loading
             },
             getIssues() {
-                return this.$store.getters.getIssues
+                return this.$store.getters.getIssues // return all the issues
             },
             openIssues() {
-                return this.getIssues.filter(function (state) {
-                    return state.state === 'open'
+                return this.getIssues.filter(function (issues) {
+                    //loop through the data and return only objects with state equals to open
+                    return issues.state === 'open'
                 })
             }
         },
         methods: {
             showIssues() {
-                this.issues = !this.issues
+                this.issues = !this.issues // set the value between true or false
+                this.showHide = this.showHide === 'show' ? 'hide' : 'show' // change the text to show issues or hide issues
                 if (this.issues === true) {
-                    this.$store.dispatch('getIssues', this.repo)
-                } else {
-
                 }
             },
             showChart() {
