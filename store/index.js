@@ -63,7 +63,7 @@ const store = () => {
             getIssues({commit, state}, payload) {
                 commit('setLoading', true)
                 this.$axios.$get(state.API + 'search/issues?q=repo:' + payload).then((res) => {
-                    commit('setIssues', res)
+                    commit('setIssues', res.items)
                     commit('setLoading', false)
                 }).catch((err) => {
                     console.log(err)
