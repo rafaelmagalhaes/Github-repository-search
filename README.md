@@ -6,7 +6,7 @@ Project was built with Angularjs
 
 ## Live Demo
 
-http://githubapi.rafaelmagalhaes.xyz/#!/
+https://rafaelmagalhaes.github.io/Github-repository-search/
 
 
 
