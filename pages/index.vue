@@ -8,7 +8,7 @@
                     info.
                 </p>
                 <div class="form-group">
-                    <input type="text" class="form-control" v-model="search" placeholder="repository">
+                    <input type="text" class="form-control" @keyup.enter="searchForRepo()" v-model="search" placeholder="repository">
                 </div>
                 <button class="btn btn-link" @click="clearForm">Clear</button>
                 <button class="btn btn-link" :disabled="!formIsValid" @click="searchForRepo">Search</button>
@@ -18,8 +18,9 @@
         <Loading class="mt-5" v-if="loading"/>
         <div v-if="!loading" class="list-group mt-5">
 
-            <nuxt-link :to="{name: 'username-fullname', params:{fullname:repository.full_name}}"
+            <nuxt-link :to="{name: '_username-fullname', params:{fullname:repository.full_name}}"
                        v-for="repository in loadedRepos"
+                       :key="repository.id"
                        class="list-group-item list-group-item-action">
                 <h3>
                     <img :src="repository.owner.avatar_url" class="avatar img-responsive">
