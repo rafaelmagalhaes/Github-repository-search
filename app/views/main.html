@@ -10,7 +10,7 @@
       </a>
       <md-input-container layout-gt-lg class="md-block">
         <label>Repository </label>
-        <input ng-model="repository">
+        <input ng-keyup="$event.keyCode == 13 ? Search() : null" ng-model="repository">
       </md-input-container>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
